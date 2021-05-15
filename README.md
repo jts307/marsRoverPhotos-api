@@ -2,7 +2,9 @@
 
 This is the api of the Shiitake Posts platform. The api is pretty standard, I just followed the directions in the lab assignment. 
 
-[deployed url](http://url-if-deployed-here)
+[deployed url for api](https://shiitakeposts.herokuapp.com/)
+
+[deployed url for client](https://unruffled-nightingale-6ea4fb.netlify.app/)
 
 ## What Worked Well
 
