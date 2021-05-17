@@ -15,9 +15,9 @@ export const signin = (user) => {
 };
 
 // note the lovely destructuring here indicating that we are passing in an object with these 3 keys
-export const signup = async ({ email, password }) => {
-  if (!email || !password) {
-    throw new Error('You must provide email and password');
+export const signup = async ({ email, password, username }) => {
+  if (!email || !password || !username) {
+    throw new Error('You must provide an email, user name, and password');
   }
 
   // See if a user with the given email exists
@@ -27,10 +27,18 @@ export const signup = async ({ email, password }) => {
     throw new Error('Email is in use');
   }
 
+  // See if a user with the given username exists
+  const existingName = await User.findOne({ username });
+  if (existingName) {
+    // If a user with email does exist, return an error
+    throw new Error('User name is in use');
+  }
+
   // use the User model to create a new user.
   const user = new User();
   user.email = email;
   user.password = password;
+  user.username = username;
   // and then save and return a token
   try {
     await user.save();

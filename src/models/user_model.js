@@ -5,6 +5,7 @@ import * as bcrypt from 'bcryptjs';
 const UserSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   password: { type: String },
+  username: String,
 },
 {
   toObject: { virtuals: true },
@@ -20,11 +21,8 @@ UserSchema.pre('save', async function beforeUserSave(next) {
   if (!user.isModified('password')) return next();
 
   try {
-    console.log(user.password);
     const salt = await bcrypt.genSalt(10);
-    console.log(salt);
     user.password = await bcrypt.hash(user.password, salt);
-    console.log(user.password);
     return next();
   } catch (error) {
     return next(error);
