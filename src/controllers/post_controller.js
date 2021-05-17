@@ -43,11 +43,10 @@ export const deletePost = async (id) => {
     throw new Error(`finding post error: ${error}`);
   }
 };
-export const updatePost = async (id, postFields, user) => {
+export const updatePost = async (id, postFields) => {
   try {
     // await updating a post by id
-    let post = await Post.findByIdAndUpdate(id, postFields, { new: true });
-    post = await Post.findByIdAndUpdate(id, { author: user }, { new: true });
+    const post = await Post.findByIdAndUpdate(id, postFields, { new: true });
     // return *updated* post
     return post;
   } catch (error) {

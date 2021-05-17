@@ -49,7 +49,7 @@ router.route('/posts/:id')
   .put(requireAuth, async (req, res) => {
     try {
       // await from controller function
-      const result = await Posts.updatePost(req.params.id, req.body, req.user);
+      const result = await Posts.updatePost(req.params.id, req.body);
       // send back the result
       res.json(result);
     } catch (error) {
