@@ -1,11 +1,12 @@
 import Post from '../models/post_model';
 
-export const createPost = async (postFields) => {
+export const createPost = async (postFields, user) => {
   const post = new Post();
   post.title = postFields.title;
   post.tags = postFields.tags;
   post.content = postFields.content;
   post.coverUrl = postFields.coverUrl;
+  post.author = user;
   try {
     // await creating a post and returning it
     const savedpost = await post.save();
@@ -42,10 +43,11 @@ export const deletePost = async (id) => {
     throw new Error(`finding post error: ${error}`);
   }
 };
-export const updatePost = async (id, postFields) => {
+export const updatePost = async (id, postFields, user) => {
   try {
     // await updating a post by id
-    const post = await Post.findByIdAndUpdate(id, postFields, { new: true });
+    let post = await Post.findByIdAndUpdate(id, postFields, { new: true });
+    post = await Post.findByIdAndUpdate(id, { author: user }, { new: true });
     // return *updated* post
     return post;
   } catch (error) {
