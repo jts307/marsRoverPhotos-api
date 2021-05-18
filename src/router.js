@@ -72,7 +72,7 @@ router.route('/posts/:id')
 router.post('/signin', requireSignin, async (req, res) => {
   try {
     const token = UserController.signin(req.user);
-    res.json({ token, email: req.user.email, username: req.body.username });
+    res.json({ token, email: req.user.email });
   } catch (error) {
     res.status(422).send({ error: error.toString() });
   }
