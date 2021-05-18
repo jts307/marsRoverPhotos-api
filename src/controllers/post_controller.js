@@ -27,7 +27,7 @@ export const getPosts = async () => {
 export const getPost = async (id) => {
   try {
     // await finding one post
-    const post = await Post.findById(id);
+    const post = await Post.findById(id).populate('author');
     return post;
   } catch (error) {
     throw new Error(`finding post error: ${error}`);
