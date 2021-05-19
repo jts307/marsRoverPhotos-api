@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import apiRouter from './router';
 
 // initialize
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To parse the incoming requests with JSON payloads
 
 // DB Setup
+dotenv.config({ silent: true });
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/platform_db';
 
 mongoose.connect(mongoURI).then(() => {
