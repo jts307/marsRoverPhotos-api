@@ -62,9 +62,6 @@ const imageCreator = async (imagePath) => {
   // Return "https" URLs by setting secure: true
   cloudinary.config({
     secure: true,
-    cloud_name: 'dn7cxtp1o',
-    api_key: '147183588732593',
-    api_secret: 'BeHV23VFTzPlB2QPdyiSMGyXm0o',
   });
 
   // Log the configuration
