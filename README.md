@@ -8,9 +8,9 @@ This is a website that allows the user to search through the most recent images 
 
 [Click here to see the site](https://relaxed-biscochitos-cb229e.netlify.app)
 
-### API
+[Github for Client](https://github.com/jts307/marsRoverPhotos)
 
-[Github for API](https://github.com/jts307/marsRoverPhotos-api)
+### API
 
 [deployed url for api](https://mars-rover-instagram.herokuapp.com/)
 
